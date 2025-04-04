@@ -11,8 +11,7 @@ namespace NodeCanvas.Tasks.Actions {
 		public GameObject player;
 		float extensionLength = 3;
 
-        public BBParameter<Renderer> enemyRenderer;
-		public Material colour;
+        public BBParameter<MateralData> Materals;
 
 
         //Use for initialization. This is called only once in the lifetime of the task.
@@ -30,7 +29,7 @@ namespace NodeCanvas.Tasks.Actions {
 
             currentGoal.value = player.transform.position + direction * extensionLength;
 
-            enemyRenderer.value.material = colour;
+            Materals.value.enemyRenderer.material = Materals.value.Orange;
 
             EndAction(true);
 		}

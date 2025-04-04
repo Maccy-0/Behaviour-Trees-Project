@@ -10,8 +10,7 @@ namespace NodeCanvas.Tasks.Actions {
 		Vector3 randomSpot;
 		public LayerMask floor;
 
-        public BBParameter<Renderer> enemyRenderer;
-        public Material colour;
+        public BBParameter<MateralData> Materals;
 
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
@@ -37,7 +36,7 @@ namespace NodeCanvas.Tasks.Actions {
             {
                 currentGoal.value = randomSpot;
 
-                enemyRenderer.value.material = colour;
+                Materals.value.enemyRenderer.material = Materals.value.Red;
                 EndAction(true);
             }
         }

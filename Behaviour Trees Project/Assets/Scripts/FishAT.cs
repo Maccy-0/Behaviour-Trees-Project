@@ -55,7 +55,6 @@ namespace NodeCanvas.Tasks.Actions {
 
             if (Vector3.Distance(bobber.value.transform.position, player.transform.position) < 1)
             {
-				Debug.Log("Got you!");
 				player.transform.position = bobber.value.transform.position;
 				playerCode.stolen = true;
 				stolen.value = 1;
@@ -63,7 +62,6 @@ namespace NodeCanvas.Tasks.Actions {
 
             if (Vector3.Distance(bobber.value.transform.position, enemy.transform.position) < 1)
             {
-                Debug.Log("Got him!");
                 enemy.transform.position = bobber.value.transform.position;
             }
 

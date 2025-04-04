@@ -1,4 +1,5 @@
 using NodeCanvas.Framework;
+using NodeCanvas.Tasks.Actions;
 using ParadoxNotion.Design;
 using UnityEngine;
 
@@ -27,7 +28,7 @@ namespace NodeCanvas.Tasks.Conditions {
 		//Called once per frame while the condition is active.
 		//Return whether the condition is success or failure.
 		protected override bool OnCheck() {
-			if (stolen.value != 0)
+            if (stolen.value != 0)
 			{
 				return true;
 			}

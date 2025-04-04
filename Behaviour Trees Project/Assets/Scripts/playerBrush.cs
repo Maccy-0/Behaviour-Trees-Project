@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class playerBrush : MonoBehaviour
 {
@@ -61,6 +62,9 @@ public class playerBrush : MonoBehaviour
             Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
 
             Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
+
+            curPosition.x = Mathf.Clamp(curPosition.x, -9, 9);
+            curPosition.z = Mathf.Clamp(curPosition.z, -9, 9);
             transform.position = curPosition;
         }
     }
