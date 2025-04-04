@@ -26,11 +26,12 @@ namespace NodeCanvas.Tasks.Actions {
 		{
 
 			RaycastHit hit;
-			Ray ray = new Ray(agent.transform.position + Vector3.down, Vector3.down);
+            Ray ray = new Ray(agent.transform.position, Vector3.down);
 
 			if (Physics.Raycast(ray, out hit))
 			{
-				Vector3 paintPoint = hit.textureCoord;
+                Debug.Log("Paint");
+                Vector3 paintPoint = hit.textureCoord;
                 Vector2 brushPosition = new Vector2(paintPoint.x * canvasTexture.width, paintPoint.y * canvasTexture.height);
 
                 int xStart = Mathf.FloorToInt(brushPosition.x - 1 * canvasTexture.width);
@@ -45,11 +46,12 @@ namespace NodeCanvas.Tasks.Actions {
                     {
                         if (x >= 0 && x < canvasTexture.width && y >= 0 && y < canvasTexture.height)
                         {
-                            canvasTexture.SetPixel(x, y, myColor);
+                            //canvasTexture.SetPixel(x, y, myColor);
+							Debug.Log("Paint");
                         }
                     }
                 }
-                canvasTexture.Apply(); 
+                //canvasTexture.Apply(); 
             }
 			EndAction(true);
 		}

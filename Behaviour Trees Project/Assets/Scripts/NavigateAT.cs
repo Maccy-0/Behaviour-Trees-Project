@@ -35,7 +35,7 @@ namespace NodeCanvas.Tasks.Actions {
 				velocity = new Vector3(cappedX, 0, cappedZ);
 			}
 
-            RaycastHit hit;
+            //RaycastHit hit;
             //if (Physics.SphereCast(agent.transform.position, 2, Vector3.down, out hit, 6, walls))
             //{
             //    agent.transform.position += -velocity.value * Time.deltaTime;
