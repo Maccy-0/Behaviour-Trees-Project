@@ -69,15 +69,14 @@ namespace NodeCanvas.Tasks.Actions {
 
 
             /* To do here:
-			 * Find out how to steal the paintbrush when the player is holding it.
 			 * Make it so it detects when they are no longer caught to start everything again (In stolenCT)
 			 */
         }
 
 		//Called when the task is disabled.
 		protected override void OnStop() {
-			
-		}
+            playerCode.stolen = false;
+        }
 
 		//Called when the task is paused.
 		protected override void OnPause() {
