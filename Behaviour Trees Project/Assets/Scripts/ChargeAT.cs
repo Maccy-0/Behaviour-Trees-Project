@@ -1,14 +1,19 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace NodeCanvas.Tasks.Actions {
 
 	public class ChargeAT : ActionTask {
 
-		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
-		protected override string OnInit() {
+		float currRotate;
+		float stopWatch;
+		public float speed;
+
+        //Use for initialization. This is called only once in the lifetime of the task.
+        //Return null if init was successfull. Return an error string otherwise
+        protected override string OnInit() {
 			return null;
 		}
 
@@ -16,13 +21,25 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-			EndAction(true);
-		}
+            //EndAction(true);
+            currRotate = -90;
+			stopWatch = 0;
+
+        }
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-			
-		}
+			stopWatch += Time.deltaTime;
+			currRotate = -90 + stopWatch * speed;
+
+
+			agent.transform.rotation = Quaternion.Euler(0, currRotate, 0);
+			if (currRotate >= 265)
+			{
+				agent.transform.rotation = Quaternion.Euler(0, -90, 0); ;
+                EndAction(true);
+            }
+        }
 
 		//Called when the task is disabled.
 		protected override void OnStop() {
