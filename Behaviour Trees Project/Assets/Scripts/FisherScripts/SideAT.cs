@@ -20,11 +20,13 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
+			//If the current point (given by other node) is above the fisher, then go up
 			if (currentPoint.value.position.z > agent.transform.position.z)
 			{
                 agent.transform.Translate(Vector3.right * Time.deltaTime * speed);
             }
 
+            //If the current point (given by other node) is below the fisher, then go down
             if (currentPoint.value.position.z < agent.transform.position.z)
             {
                 agent.transform.Translate(Vector3.left * Time.deltaTime * speed);

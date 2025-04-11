@@ -12,6 +12,7 @@ public class paintCounter : MonoBehaviour
     public float bluePaint;
     public float redPaint;
     public float bluePaintMax;
+    //Important for these to match the read tag names
     private string redTag = "RedPaint";
     private string blueTag = "BluePaint";
 
@@ -25,17 +26,20 @@ public class paintCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Look though every object, tell many how much red paint there is
         GameObject[] redObjects = GameObject.FindGameObjectsWithTag(redTag);
         redPaint = redObjects.Length;
-
+        //Do it again now with blue
         GameObject[] blueObjects = GameObject.FindGameObjectsWithTag(blueTag);
         bluePaint = blueObjects.Length;
 
+        //Highscore updater
         if (bluePaint > bluePaintMax)
         {
             bluePaintMax = bluePaint;
         }
 
+        //Changes the UI text
         counterText.text = "Highscore: " + bluePaintMax.ToString() + "\nBlue Paint: " + bluePaint.ToString() + "\nRed Paint: " + redPaint.ToString();
     }
 }

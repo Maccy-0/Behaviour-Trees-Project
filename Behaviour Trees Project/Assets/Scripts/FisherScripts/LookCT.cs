@@ -28,10 +28,12 @@ namespace NodeCanvas.Tasks.Conditions {
 		//Called once per frame while the condition is active.
 		//Return whether the condition is success or failure.
 		protected override bool OnCheck() {
+            //Sends a raycast across the horizontal axis of the screen
             RaycastHit hit;
             Ray ray = new Ray(agent.transform.position, Vector3.left);
             Physics.Raycast(ray, out hit, Mathf.Infinity, player);
 
+			//Says if it sees the player on that axis
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, player))
             {
 				return true;

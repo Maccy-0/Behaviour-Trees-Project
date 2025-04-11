@@ -26,8 +26,10 @@ namespace NodeCanvas.Tasks.Actions {
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
+			//If the player has moved the bush away from the bobber
             if (Vector3.Distance(bobber.value.transform.position, player.transform.position) > 1)
             {
+				//Then it is no longer stolen
                 stolen.value = 0;
 				EndAction(true);
             }

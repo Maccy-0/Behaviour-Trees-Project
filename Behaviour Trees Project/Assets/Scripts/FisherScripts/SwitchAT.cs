@@ -20,6 +20,10 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
+			//There are 2 points in the scene
+			//If this node activates that means the fisher has reached a node and needs to switch to the othere
+
+			//So if looks at the current point, and then sets the other one as the new current point
 			if (currentPoint.value == point1)
 			{
 				currentPoint.value = point2;

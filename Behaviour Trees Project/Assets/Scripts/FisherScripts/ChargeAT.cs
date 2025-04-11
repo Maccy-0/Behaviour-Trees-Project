@@ -21,7 +21,7 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-            //EndAction(true);
+			//Starting rotation
             currRotate = -90;
 			stopWatch = 0;
 
@@ -32,8 +32,9 @@ namespace NodeCanvas.Tasks.Actions {
 			stopWatch += Time.deltaTime;
 			currRotate = -90 + stopWatch * speed;
 
-
+			//Spins it around the main object based on how much time has passed and the speed
 			agent.transform.rotation = Quaternion.Euler(0, currRotate, 0);
+			//Becuase it starts at -90 it caps out at 270. So we have picked 265 to be safe to not pass over with how quick it's moving. 
 			if (currRotate >= 265)
 			{
 				agent.transform.rotation = Quaternion.Euler(0, -90, 0); ;

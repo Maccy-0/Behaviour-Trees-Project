@@ -11,6 +11,7 @@ namespace NodeCanvas.Tasks.Actions {
 		public LayerMask floor;
 
         public BBParameter<MateralData> Materals;
+        public BBParameter<GameObject> exPoint;
 
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
@@ -31,12 +32,17 @@ namespace NodeCanvas.Tasks.Actions {
             Ray ray = new Ray(agent.transform.position, Vector3.down);
             Physics.Raycast(ray, out hit, Mathf.Infinity, floor);
 
+            //Sets the current point to go towards for the Move script as a random point
             randomSpot = new Vector3(Random.Range(-7, 7), 0, Random.Range(-7, 7));
+
+			//If this spot is invalld (Off the map) then it runs it again.
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, floor))
             {
                 currentGoal.value = randomSpot;
 
+                //Updates the visuals
                 Materals.value.enemyRenderer.material = Materals.value.Red;
+                exPoint.value.SetActive(false);
                 EndAction(true);
             }
         }

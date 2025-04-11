@@ -8,10 +8,11 @@ namespace NodeCanvas.Tasks.Conditions {
 	public class CloseCT : ConditionTask {
 
 		public GameObject player;
+		public float detectionRadius;
 
-		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
-		protected override string OnInit(){
+        //Use for initialization. This is called only once in the lifetime of the task.
+        //Return null if init was successfull. Return an error string otherwise
+        protected override string OnInit(){
 			return null;
 		}
 
@@ -28,7 +29,9 @@ namespace NodeCanvas.Tasks.Conditions {
 		//Called once per frame while the condition is active.
 		//Return whether the condition is success or failure.
 		protected override bool OnCheck() {
-            if (Vector3.Distance(agent.transform.position, player.transform.position) < 7)
+
+			//Just checks if the brush (not the mouse) is in the radius around the enemy
+            if (Vector3.Distance(agent.transform.position, player.transform.position) < detectionRadius)
             {
 				return false;
             }

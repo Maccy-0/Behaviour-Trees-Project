@@ -27,6 +27,7 @@ namespace NodeCanvas.Tasks.Conditions {
 		//Called once per frame while the condition is active.
 		//Return whether the condition is success or failure.
 		protected override bool OnCheck() {
+			//Checks if the player is super close, which would only happen after being stolen.
             if (Vector3.Distance(agent.transform.position, currentPoint.value) < 1)
             {
                 return true;

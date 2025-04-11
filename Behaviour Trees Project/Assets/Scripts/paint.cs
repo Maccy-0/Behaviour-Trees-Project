@@ -7,13 +7,14 @@ using TMPro;
 
 public class paint : MonoBehaviour
 {
-    public LayerMask badPaint;
+    //Script for both types of paint on the ground
+
+    public LayerMask badPaint; //This changes based on which team it's a part of
     float timer;
 
     // Start is called before the first frame update
     void Start()
     {
-        //counter = FindObjectOfType<paintCounter>();
 
         timer = 0f;
 
@@ -25,13 +26,15 @@ public class paint : MonoBehaviour
         
 
         timer += Time.deltaTime;
-
+        //We check for a timer so that recently placed paint will stay and the old will be destroyed
         if (timer > 1)
         {
+            //Check it it's touching the other color of paint
             Collider[] colliders = Physics.OverlapSphere(transform.position, 0.3f, badPaint);
 
             if (colliders.Length > 0)
             {
+                //If there is, destroy itself
                 Destroy(gameObject);
             }
 
