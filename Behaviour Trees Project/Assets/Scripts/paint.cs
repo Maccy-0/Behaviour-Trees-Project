@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEngine.UI;
+using TMPro;
 
 public class paint : MonoBehaviour
 {
@@ -11,7 +13,10 @@ public class paint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //counter = FindObjectOfType<paintCounter>();
+
         timer = 0f;
+
     }
 
     // Update is called once per frame
